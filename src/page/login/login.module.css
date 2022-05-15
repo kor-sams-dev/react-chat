@@ -1,0 +1,55 @@
+.login {
+  width: 100vw;
+  height: 100vh;
+  background-color: #b3e8e5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 15rem;
+  height: 22rem;
+  border-radius: 10%;
+  background-color: #82dbd8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: 5px 5px 15px 5px #3bacb6;
+}
+
+.title {
+  font-weight: 500;
+  font-family: 'Koulen', cursive;
+  color: #484848;
+}
+
+.title_info {
+  font-weight: 400;
+  font-family: 'Koulen', cursive;
+  color: #484848;
+}
+
+.server_info {
+  font-size: 1rem;
+}
+
+.server_info::placeholder {
+  font-size: 0.8rem;
+}
+
+.submit {
+  width: 10rem;
+  height: 2rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  background-color: #2f8f9d;
+  color: white;
+  font-weight: 600;
+  border: 0;
+}
+
+.submit:hover {
+  cursor: pointer;
+}
