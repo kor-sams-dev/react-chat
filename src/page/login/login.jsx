@@ -22,7 +22,7 @@ const Login = ({ socket }) => {
         name: nameRef.current.value,
       })
     ) {
-      // navigate('/react-chat/message');
+      navigate('/react-chat/message');
     } else {
       alert('fail connect server');
     }
