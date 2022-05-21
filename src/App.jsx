@@ -10,7 +10,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login socket={socket} />} />
+        <Route path="/react-chat" element={<Login socket={socket} />} />
         <Route path="/message" element={<Message socket={socket} />} />
       </Routes>
     </BrowserRouter>
