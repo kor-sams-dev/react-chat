@@ -19,7 +19,7 @@ const Message = ({ socket }) => {
     if (socket.connectionState()) {
       socket.on('msgToClient', onSocket);
     } else {
-      navigate('/');
+      navigate('/react-chat');
     }
   }, []);
 
