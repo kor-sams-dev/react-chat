@@ -1,5 +1,5 @@
-const handleConnect = ({ socket, server, port, name }) => {
-  const result = socket.connect({ server, port, name });
+const handleConnect = ({ connectType, socket, server, port, name }) => {
+  const result = socket.connect({ connectType, server, port, name });
 
   if (result) {
     localStorage.setItem('chat-server', server);

@@ -10,9 +10,9 @@ class Socket {
     return !!this.#io;
   }
 
-  async connect({ server, port, name }) {
+  async connect({ connectType, server, port, name }) {
     try {
-      this.#io = await io.connect(`http://${server}:${port}`);
+      this.#io = await io.connect(`${connectType}://${server}:${port}`);
       this.#server = server;
       this.#port = port;
       this.#name = name;
