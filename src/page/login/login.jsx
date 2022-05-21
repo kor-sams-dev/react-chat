@@ -27,9 +27,10 @@ const Login = ({ socket }) => {
   };
 
   useEffect(() => {
-    const server = sessionStorage.getItem('chat-server');
-    const port = sessionStorage.getItem('chat-port');
-    const name = sessionStorage.getItem('chat-name');
+    const server = localStorage.getItem('chat-server');
+    const port = localStorage.getItem('chat-port');
+    const name = localStorage.getItem('chat-name');
+    console.log(server);
     serverRef.current.value = server ? server : '';
     portRef.current.value = port ? port : '';
     nameRef.current.value = name ? name : '';

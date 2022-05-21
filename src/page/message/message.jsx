@@ -1,19 +1,26 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import MessageCards from '../../components/messageCards/messageCards';
 import style from './message.module.css';
 
 const Message = ({ socket }) => {
   const [state, setState] = useState({ message: '', name: '' });
   const [chat, setChat] = useState([]);
 
-  const onSocket = ({ name, message }) => {
-    console.log(name, message);
+  let navigate = useNavigate();
+
+  const onSocket = ({ name, message, client, key }) => {
     setChat((chat) => {
-      return [...chat, { name, message }];
+      return [...chat, { name, message, client, key }];
     });
   };
 
   useEffect(() => {
-    socket.on('msgToClient', onSocket);
+    if (socket.connectionState()) {
+      socket.on('msgToClient', onSocket);
+    } else {
+      navigate('/');
+    }
   }, []);
 
   const onTextChange = (e) => {
@@ -23,50 +30,34 @@ const Message = ({ socket }) => {
   const onMessageSubmit = (e) => {
     e.preventDefault();
     const { name, message } = state;
-    socket.emit('msgToServer', { name, message });
+    if (!message) return;
+    const key = Date.now();
+    socket.emit('msgToServer', { message, key });
     setState({ message: '', name });
   };
 
-  const renderChat = () => {
-    return chat.map(({ name, message }, index) => (
-      <div key={index}>
-        <h3>
-          {name}:<span>{message}</span>
-        </h3>
-      </div>
-    ));
-  };
-
   return (
-    <div className="card">
-      <form onSubmit={onMessageSubmit}>
-        <h1>Message</h1>
-        <div className="name-field">
-          name
-          <input
-            name="name"
-            onChange={(e) => onTextChange(e)}
-            value={state.name}
-            label="Name"
-          />
-        </div>
-        <div>
-          massage
-          <input
-            name="message"
-            onChange={(e) => onTextChange(e)}
-            value={state.message}
-            id="outlined-multiline-static"
-            variant="outlined"
-            label="Message"
-          />
-        </div>
-        <button>Send Message</button>
-      </form>
-      <div className="render-chat">
+    <div className={style.message_wrapper}>
+      <div className={style.title}>
         <h1>Chat log</h1>
-        {renderChat()}
       </div>
+      <div className={style.chats}>
+        <MessageCards messages={chat} socket={socket} />
+      </div>
+
+      <form className={style.wrapper} onSubmit={onMessageSubmit}>
+        <input
+          className={style.message}
+          name="message"
+          onChange={(e) => onTextChange(e)}
+          value={state.message}
+          id="outlined-multiline-static"
+          variant="outlined"
+          label="Message"
+          placeholder="메세지를 입력해주세요."
+        />
+        <button className={style.button_send}>전송</button>
+      </form>
     </div>
   );
 };

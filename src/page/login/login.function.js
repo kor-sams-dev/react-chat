@@ -1,10 +1,10 @@
 const handleConnect = ({ socket, server, port, name }) => {
-  const result = socket.connect({ server, port });
+  const result = socket.connect({ server, port, name });
 
   if (result) {
-    sessionStorage.setItem('server', server);
-    sessionStorage.setItem('port', port);
-    sessionStorage.setItem('name', name);
+    localStorage.setItem('chat-server', server);
+    localStorage.setItem('chat-port', port);
+    localStorage.setItem('chat-name', name);
   }
   return result;
 };

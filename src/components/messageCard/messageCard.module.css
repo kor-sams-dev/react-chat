@@ -1,0 +1,63 @@
+.hidden {
+  display: none;
+}
+
+.message_card {
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.left {
+  align-items: flex-start;
+}
+
+.right {
+  align-items: flex-end;
+}
+
+.name {
+  margin-bottom: 0.3rem;
+  padding: 0.4rem;
+  font-weight: 500;
+  font-family: 'Koulen', cursive;
+}
+
+.message {
+  padding: 0.4rem;
+  background-color: #82dbd8;
+  border-radius: 0.4rem;
+  position: relative;
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 1.5rem;
+}
+
+.message.left {
+  border-top-left-radius: 0;
+}
+
+.message.right {
+  border-top-right-radius: 0;
+}
+
+.left:after {
+  content: '';
+  border-top: 0 solid transparent;
+  border-left: 0 solid transparent;
+  border-right: 0.4rem solid #82dbd8;
+  border-bottom: 0.5rem solid transparent;
+  position: absolute;
+  top: 0;
+  left: -0.4rem;
+}
+
+.right:after {
+  content: '';
+  border-top: 0 solid transparent;
+  border-left: 0.4rem solid #82dbd8;
+  border-right: 0 solid transparent;
+  border-bottom: 0.5rem solid transparent;
+  position: absolute;
+  top: 0;
+  right: -0.4rem;
+}

@@ -1,0 +1,52 @@
+.message_wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: #b3e8e5;
+  display: grid;
+  grid-template-rows: 4rem auto 3rem;
+  grid-template-areas:
+    'header'
+    'body'
+    'footer';
+  flex-direction: column;
+}
+
+.title {
+  background-color: #2f8f9d;
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem;
+  grid-area: header;
+  font-family: 'Koulen', cursive;
+  display: flex;
+  align-items: center;
+}
+
+.chats {
+  display: flex;
+  flex-direction: column;
+  grid-area: body;
+  overflow-y: scroll;
+}
+
+.wrapper {
+  height: 3rem;
+  display: flex;
+  padding: 0.3rem;
+  grid-area: footer;
+}
+
+.message {
+  flex: auto;
+  border-radius: 0.5rem;
+  border: none;
+  margin-left: 0.5rem;
+}
+
+.button_send {
+  background-color: #3bacb6;
+  border: none;
+  border-radius: 0.5rem;
+  width: 3rem;
+  margin: 0 0.5rem;
+}
